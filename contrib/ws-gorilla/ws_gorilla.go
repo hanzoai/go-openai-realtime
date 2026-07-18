@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	openairt "github.com/WqyJh/go-openai-realtime"
+	openairt "github.com/hanzoai/go-openai-realtime"
 	"github.com/gorilla/websocket"
 )
 
