@@ -6,6 +6,8 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/gorilla/websocket v1.5.3 h1:saDtZ6Pbx/0u+bgYQ3q96pZgCzfhKXGPqt7kZ72aNNg=
 github.com/gorilla/websocket v1.5.3/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/hanzoai/go-openai v1.41.0 h1:/jF/fZbBHyK7N14mQquUKzCnjwomcuy5YVBIn8AR3NQ=
+github.com/hanzoai/go-openai-realtime v1.0.0 h1:toSd20ii/1zwxk1ULlT6bHZTTdi5qf7AIMzZm0Gy8NY=
+github.com/hanzoai/go-openai-realtime v1.0.0/go.mod h1:YUQQXTK9zAZvAWriSYm0PnzvApO0EbPiwTT07Ycqrtw=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
