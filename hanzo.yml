@@ -1,0 +1,9 @@
+# Go client for the OpenAI realtime WebSocket API — a library, no image.
+# Gate: the module compiles and the full unit suite runs. The integration tests
+# in this tree are guarded by an API key and skip without one.
+test:
+  - name: test
+    run: |
+      set -euo pipefail
+      go build ./...
+      go test ./...
