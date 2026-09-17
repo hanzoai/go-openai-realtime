@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	openairt "github.com/hanzoai/go-openai-realtime"
 	"github.com/WqyJh/jsontools"
 	"github.com/hanzoai/go-openai"
+	openairt "github.com/hanzoai/go-openai-realtime"
 	"github.com/stretchr/testify/require"
 )
 
@@ -18,13 +18,11 @@ func TestCreateSessionRequest(t *testing.T) {
 }`
 	expected := openairt.CreateSessionRequest{
 		Model: openairt.GPT4oRealtimePreview20241217,
-		ClientSession: openairt.ClientSession{
-			Modalities: []openairt.Modality{
-				openairt.ModalityAudio,
-				openairt.ModalityText,
-			},
-			Instructions: "You are a friendly assistant.",
+		Modalities: []openairt.Modality{
+			openairt.ModalityAudio,
+			openairt.ModalityText,
 		},
+		Instructions: "You are a friendly assistant.",
 	}
 
 	var actual openairt.CreateSessionRequest
@@ -67,27 +65,25 @@ func TestCreateSessionResponse(t *testing.T) {
 			Value:     "ek_abc123",
 			ExpiresAt: 1234567890,
 		},
-		ServerSession: openairt.ServerSession{
-			ID:     "sess_001",
-			Object: "realtime.session",
-			Model:  openairt.GPT4oRealtimePreview20241217,
-			Modalities: []openairt.Modality{
-				openairt.ModalityAudio,
-				openairt.ModalityText,
-			},
-			Instructions:      "You are a friendly assistant.",
-			Voice:             openairt.VoiceAlloy,
-			InputAudioFormat:  openairt.AudioFormatPcm16,
-			OutputAudioFormat: openairt.AudioFormatPcm16,
-			InputAudioTranscription: &openairt.InputAudioTranscription{
-				Model: openai.Whisper1,
-			},
-			TurnDetection:   nil,
-			Tools:           []openairt.Tool{},
-			ToolChoice:      openairt.ServerToolChoice{String: openairt.ToolChoiceNone},
-			Temperature:     &temperature,
-			MaxOutputTokens: openairt.IntOrInf(200),
+		ID:     "sess_001",
+		Object: "realtime.session",
+		Model:  openairt.GPT4oRealtimePreview20241217,
+		Modalities: []openairt.Modality{
+			openairt.ModalityAudio,
+			openairt.ModalityText,
 		},
+		Instructions:      "You are a friendly assistant.",
+		Voice:             openairt.VoiceAlloy,
+		InputAudioFormat:  openairt.AudioFormatPcm16,
+		OutputAudioFormat: openairt.AudioFormatPcm16,
+		InputAudioTranscription: &openairt.InputAudioTranscription{
+			Model: openai.Whisper1,
+		},
+		TurnDetection:   nil,
+		Tools:           []openairt.Tool{},
+		ToolChoice:      openairt.ServerToolChoice{String: openairt.ToolChoiceNone},
+		Temperature:     &temperature,
+		MaxOutputTokens: openairt.IntOrInf(200),
 	}
 
 	var actual openairt.CreateSessionResponse

@@ -22,10 +22,8 @@ func TestErrorEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ErrorEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			Type:    openairt.ServerEventTypeError,
-			EventID: "event_890",
-		},
+		Type:    openairt.ServerEventTypeError,
+		EventID: "event_890",
 		Error: openairt.Error{
 			Type:    "invalid_request_error",
 			Code:    "invalid_event",
@@ -108,10 +106,8 @@ func TestSessionCreatedEvent(t *testing.T) {
 }`
 	temperature := float32(0.8)
 	expected := openairt.SessionCreatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_1234",
-			Type:    openairt.ServerEventTypeSessionCreated,
-		},
+		EventID: "event_1234",
+		Type:    openairt.ServerEventTypeSessionCreated,
 		Session: openairt.ServerSession{
 			ID:                      "sess_001",
 			Object:                  "realtime.session",
@@ -123,12 +119,10 @@ func TestSessionCreatedEvent(t *testing.T) {
 			OutputAudioFormat:       openairt.AudioFormatPcm16,
 			InputAudioTranscription: nil,
 			TurnDetection: &openairt.ServerTurnDetection{
-				Type: openairt.ServerTurnDetectionTypeServerVad,
-				TurnDetectionParams: openairt.TurnDetectionParams{
-					Threshold:         0.5,
-					PrefixPaddingMs:   300,
-					SilenceDurationMs: 200,
-				},
+				Type:              openairt.ServerTurnDetectionTypeServerVad,
+				Threshold:         0.5,
+				PrefixPaddingMs:   300,
+				SilenceDurationMs: 200,
 			},
 			Tools:           []openairt.Tool{},
 			ToolChoice:      openairt.ServerToolChoice{String: openairt.ToolChoiceAuto},
@@ -169,10 +163,8 @@ func TestSessionUpdatedEvent(t *testing.T) {
 }`
 	temperature := float32(0.7)
 	expected := openairt.SessionUpdatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_5678",
-			Type:    openairt.ServerEventTypeSessionUpdated,
-		},
+		EventID: "event_5678",
+		Type:    openairt.ServerEventTypeSessionUpdated,
 		Session: openairt.ServerSession{
 			ID:                "sess_001",
 			Object:            "realtime.session",
@@ -240,10 +232,8 @@ func TestConversationCreatedEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ConversationCreatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_9101",
-			Type:    openairt.ServerEventTypeConversationCreated,
-		},
+		EventID: "event_9101",
+		Type:    openairt.ServerEventTypeConversationCreated,
 		Conversation: openairt.Conversation{
 			ID:     "conv_001",
 			Object: "realtime.conversation",
@@ -275,10 +265,8 @@ func TestConversationItemCreatedEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ConversationItemCreatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_1920",
-			Type:    openairt.ServerEventTypeConversationItemCreated,
-		},
+		EventID:        "event_1920",
+		Type:           openairt.ServerEventTypeConversationItemCreated,
 		PreviousItemID: "msg_002",
 		Item: openairt.ResponseMessageItem{
 			Object: "realtime.item",
@@ -311,10 +299,8 @@ func TestConversationItemInputAudioTranscriptionCompletedEvent(t *testing.T) {
     "transcript": "Hello, how are you?"
 }`
 	expected := openairt.ConversationItemInputAudioTranscriptionCompletedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_2122",
-			Type:    openairt.ServerEventTypeConversationItemInputAudioTranscriptionCompleted,
-		},
+		EventID:      "event_2122",
+		Type:         openairt.ServerEventTypeConversationItemInputAudioTranscriptionCompleted,
 		ItemID:       "msg_003",
 		ContentIndex: 1,
 		Transcript:   "Hello, how are you?",
@@ -339,10 +325,8 @@ func TestConversationItemInputAudioTranscriptionFailedEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ConversationItemInputAudioTranscriptionFailedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_2324",
-			Type:    openairt.ServerEventTypeConversationItemInputAudioTranscriptionFailed,
-		},
+		EventID:      "event_2324",
+		Type:         openairt.ServerEventTypeConversationItemInputAudioTranscriptionFailed,
 		ItemID:       "msg_003",
 		ContentIndex: 0,
 		Error: openairt.Error{
@@ -368,10 +352,8 @@ func TestConversationItemTruncatedEvent(t *testing.T) {
     "audio_end_ms": 1500
 }`
 	expected := openairt.ConversationItemTruncatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_2526",
-			Type:    openairt.ServerEventTypeConversationItemTruncated,
-		},
+		EventID:      "event_2526",
+		Type:         openairt.ServerEventTypeConversationItemTruncated,
 		ItemID:       "msg_004",
 		ContentIndex: 2,
 		AudioEndMs:   1500,
@@ -389,11 +371,9 @@ func TestConversationItemDeletedEvent(t *testing.T) {
     "item_id": "msg_005"
 }`
 	expected := openairt.ConversationItemDeletedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_2728",
-			Type:    openairt.ServerEventTypeConversationItemDeleted,
-		},
-		ItemID: "msg_005",
+		EventID: "event_2728",
+		Type:    openairt.ServerEventTypeConversationItemDeleted,
+		ItemID:  "msg_005",
 	}
 	actual, err := openairt.UnmarshalServerEvent([]byte(data))
 	require.NoError(t, err)
@@ -409,10 +389,8 @@ func TestInputAudioBufferCommittedEvent(t *testing.T) {
     "item_id": "msg_002"
 }`
 	expected := openairt.InputAudioBufferCommittedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_1121",
-			Type:    openairt.ServerEventTypeInputAudioBufferCommitted,
-		},
+		EventID:        "event_1121",
+		Type:           openairt.ServerEventTypeInputAudioBufferCommitted,
 		PreviousItemID: "msg_001",
 		ItemID:         "msg_002",
 	}
@@ -428,10 +406,8 @@ func TestInputAudioBufferClearedEvent(t *testing.T) {
     "type": "input_audio_buffer.cleared"
 }`
 	expected := openairt.InputAudioBufferClearedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_1314",
-			Type:    openairt.ServerEventTypeInputAudioBufferCleared,
-		},
+		EventID: "event_1314",
+		Type:    openairt.ServerEventTypeInputAudioBufferCleared,
 	}
 	actual, err := openairt.UnmarshalServerEvent([]byte(data))
 	require.NoError(t, err)
@@ -447,10 +423,8 @@ func TestInputAudioBufferSpeechStartedEvent(t *testing.T) {
     "item_id": "msg_003"
 }`
 	expected := openairt.InputAudioBufferSpeechStartedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_1516",
-			Type:    openairt.ServerEventTypeInputAudioBufferSpeechStarted,
-		},
+		EventID:      "event_1516",
+		Type:         openairt.ServerEventTypeInputAudioBufferSpeechStarted,
 		AudioStartMs: 1000,
 		ItemID:       "msg_003",
 	}
@@ -468,10 +442,8 @@ func TestInputAudioBufferSpeechStoppedEvent(t *testing.T) {
     "item_id": "msg_003"
 }`
 	expected := openairt.InputAudioBufferSpeechStoppedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_1718",
-			Type:    openairt.ServerEventTypeInputAudioBufferSpeechStopped,
-		},
+		EventID:    "event_1718",
+		Type:       openairt.ServerEventTypeInputAudioBufferSpeechStopped,
 		AudioEndMs: 2000,
 		ItemID:     "msg_003",
 	}
@@ -495,10 +467,8 @@ func TestResponseCreatedEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ResponseCreatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_2930",
-			Type:    openairt.ServerEventTypeResponseCreated,
-		},
+		EventID: "event_2930",
+		Type:    openairt.ServerEventTypeResponseCreated,
 		Response: openairt.Response{
 			ID:            "resp_001",
 			Object:        "realtime.response",
@@ -550,10 +520,8 @@ func TestResponseDoneEvent(t *testing.T) {
   }
 }`
 	expected := openairt.ResponseDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_APnPcL4wUvPmXTFejvDzn",
-			Type:    openairt.ServerEventTypeResponseDone,
-		},
+		EventID: "event_APnPcL4wUvPmXTFejvDzn",
+		Type:    openairt.ServerEventTypeResponseDone,
 		Response: openairt.Response{
 			ID:            "resp_APnPbMhvCmC0K8qZALSeI",
 			Object:        "realtime.response",
@@ -562,16 +530,14 @@ func TestResponseDoneEvent(t *testing.T) {
 			Output: []openairt.ResponseMessageItem{
 				{
 					Object: "realtime.item",
-					MessageItem: openairt.MessageItem{
-						ID:     "item_APnPbzHkH7zf8AteO9hdx",
-						Type:   openairt.MessageItemTypeMessage,
-						Status: openairt.ItemStatusCompleted,
-						Role:   openairt.MessageRoleAssistant,
-						Content: []openairt.MessageContentPart{
-							{
-								Type:       openairt.MessageContentTypeAudio,
-								Transcript: "Hello! How can I help you today?",
-							},
+					ID:     "item_APnPbzHkH7zf8AteO9hdx",
+					Type:   openairt.MessageItemTypeMessage,
+					Status: openairt.ItemStatusCompleted,
+					Role:   openairt.MessageRoleAssistant,
+					Content: []openairt.MessageContentPart{
+						{
+							Type:       openairt.MessageContentTypeAudio,
+							Transcript: "Hello! How can I help you today?",
 						},
 					},
 				},
@@ -618,10 +584,8 @@ func TestResponseOutputItemAddedEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ResponseOutputItemAddedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_3334",
-			Type:    openairt.ServerEventTypeResponseOutputItemAdded,
-		},
+		EventID:     "event_3334",
+		Type:        openairt.ServerEventTypeResponseOutputItemAdded,
 		ResponseID:  "resp_001",
 		OutputIndex: 10,
 		Item: openairt.ResponseMessageItem{
@@ -662,10 +626,8 @@ func TestResponseOutputItemDoneEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ResponseOutputItemDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_3536",
-			Type:    openairt.ServerEventTypeResponseOutputItemDone,
-		},
+		EventID:     "event_3536",
+		Type:        openairt.ServerEventTypeResponseOutputItemDone,
 		ResponseID:  "resp_001",
 		OutputIndex: 0,
 		Item: openairt.ResponseMessageItem{
@@ -704,10 +666,8 @@ func TestResponseContentPartAddedEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ResponseContentPartAddedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_3738",
-			Type:    openairt.ServerEventTypeResponseContentPartAdded,
-		},
+		EventID:      "event_3738",
+		Type:         openairt.ServerEventTypeResponseContentPartAdded,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_007",
 		OutputIndex:  1,
@@ -737,10 +697,8 @@ func TestResponseContentPartDoneEvent(t *testing.T) {
     }
 }`
 	expected := openairt.ResponseContentPartDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_3940",
-			Type:    openairt.ServerEventTypeResponseContentPartDone,
-		},
+		EventID:      "event_3940",
+		Type:         openairt.ServerEventTypeResponseContentPartDone,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_007",
 		OutputIndex:  0,
@@ -767,10 +725,8 @@ func TestResponseTextDelta(t *testing.T) {
     "delta": "Sure, I can h"
 }`
 	expected := openairt.ResponseTextDeltaEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_4142",
-			Type:    openairt.ServerEventTypeResponseTextDelta,
-		},
+		EventID:      "event_4142",
+		Type:         openairt.ServerEventTypeResponseTextDelta,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_007",
 		OutputIndex:  0,
@@ -794,10 +750,8 @@ func TestResponseTextDoneEvent(t *testing.T) {
     "text": "Sure, I can help with that."
 }`
 	expected := openairt.ResponseTextDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_4344",
-			Type:    openairt.ServerEventTypeResponseTextDone,
-		},
+		EventID:      "event_4344",
+		Type:         openairt.ServerEventTypeResponseTextDone,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_007",
 		OutputIndex:  0,
@@ -821,10 +775,8 @@ func TestResponseAudioTranscriptDelta(t *testing.T) {
     "delta": "Hello, how can I a"
 }`
 	expected := openairt.ResponseAudioTranscriptDeltaEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_4546",
-			Type:    openairt.ServerEventTypeResponseAudioTranscriptDelta,
-		},
+		EventID:      "event_4546",
+		Type:         openairt.ServerEventTypeResponseAudioTranscriptDelta,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_008",
 		OutputIndex:  1,
@@ -848,10 +800,8 @@ func TestResponseAudioTranscriptDoneEvent(t *testing.T) {
     "transcript": "Hello, how can I assist you today?"
 }`
 	expected := openairt.ResponseAudioTranscriptDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_4748",
-			Type:    openairt.ServerEventTypeResponseAudioTranscriptDone,
-		},
+		EventID:      "event_4748",
+		Type:         openairt.ServerEventTypeResponseAudioTranscriptDone,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_008",
 		OutputIndex:  0,
@@ -875,10 +825,8 @@ func TestResponseAudioDeltaEvent(t *testing.T) {
     "delta": "Base64EncodedAudioDelta"
 }`
 	expected := openairt.ResponseAudioDeltaEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_4950",
-			Type:    openairt.ServerEventTypeResponseAudioDelta,
-		},
+		EventID:      "event_4950",
+		Type:         openairt.ServerEventTypeResponseAudioDelta,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_008",
 		OutputIndex:  0,
@@ -901,10 +849,8 @@ func TestResponseAudioDoneEvent(t *testing.T) {
     "content_index": 0
 }`
 	expected := openairt.ResponseAudioDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_5152",
-			Type:    openairt.ServerEventTypeResponseAudioDone,
-		},
+		EventID:      "event_5152",
+		Type:         openairt.ServerEventTypeResponseAudioDone,
 		ResponseID:   "resp_001",
 		ItemID:       "msg_008",
 		OutputIndex:  0,
@@ -927,10 +873,8 @@ func TestResponseFunctionCallArgumentsDelta(t *testing.T) {
     "delta": "{\"location\": \"San\""
 }`
 	expected := openairt.ResponseFunctionCallArgumentsDeltaEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_5354",
-			Type:    openairt.ServerEventTypeResponseFunctionCallArgumentsDelta,
-		},
+		EventID:     "event_5354",
+		Type:        openairt.ServerEventTypeResponseFunctionCallArgumentsDelta,
 		ResponseID:  "resp_002",
 		ItemID:      "fc_001",
 		OutputIndex: 0,
@@ -954,10 +898,8 @@ func TestResponseFunctionCallArgumentsDoneEvent(t *testing.T) {
     "arguments": "{\"location\": \"San Francisco\"}"
 }`
 	expected := openairt.ResponseFunctionCallArgumentsDoneEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_5556",
-			Type:    openairt.ServerEventTypeResponseFunctionCallArgumentsDone,
-		},
+		EventID:     "event_5556",
+		Type:        openairt.ServerEventTypeResponseFunctionCallArgumentsDone,
 		ResponseID:  "resp_002",
 		ItemID:      "fc_001",
 		OutputIndex: 1,
@@ -990,10 +932,8 @@ func TestRateLimitsUpdatedEvent(t *testing.T) {
     ]
 }`
 	expected := openairt.RateLimitsUpdatedEvent{
-		ServerEventBase: openairt.ServerEventBase{
-			EventID: "event_5758",
-			Type:    openairt.ServerEventTypeRateLimitsUpdated,
-		},
+		EventID: "event_5758",
+		Type:    openairt.ServerEventTypeRateLimitsUpdated,
 		RateLimits: []openairt.RateLimit{
 			{
 				Name:         "requests",

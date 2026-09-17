@@ -1,6 +1,6 @@
 module github.com/hanzoai/go-openai-realtime
 
-go 1.19
+go 1.27.1
 
 require (
 	github.com/WqyJh/jsontools v0.3.1

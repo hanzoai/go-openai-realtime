@@ -28,7 +28,7 @@ func main() {
 	responseDeltaHandler := func(ctx context.Context, event openairt.ServerEvent) {
 		switch event.ServerEventType() {
 		case openairt.ServerEventTypeResponseAudioTranscriptDelta:
-			fmt.Printf(event.(openairt.ResponseAudioTranscriptDeltaEvent).Delta)
+			fmt.Print(event.(openairt.ResponseAudioTranscriptDeltaEvent).Delta)
 		}
 	}
 

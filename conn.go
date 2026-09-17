@@ -114,8 +114,7 @@ func (c *ConnHandler) run() error {
 
 		msg, err := c.conn.ReadMessage(c.ctx)
 		if err != nil {
-			var permanent *PermanentError
-			if errors.As(err, &permanent) {
+			if permanent, ok := errors.AsType[*PermanentError](err); ok {
 				return permanent.Err
 			}
 			c.conn.logger.Warnf("read message temporary error: %+v", err)

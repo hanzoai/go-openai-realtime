@@ -1,6 +1,6 @@
 module github.com/hanzoai/go-openai-realtime/examples
 
-go 1.19
+go 1.27.1
 
 require (
 	github.com/faiface/beep v1.1.0

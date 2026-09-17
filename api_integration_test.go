@@ -17,13 +17,11 @@ func TestCreateSession(t *testing.T) {
 	client := openairt.NewClient(key)
 	session, err := client.CreateSession(context.Background(), &openairt.CreateSessionRequest{
 		Model: openairt.GPT4oRealtimePreview20241217,
-		ClientSession: openairt.ClientSession{
-			Modalities: []openairt.Modality{
-				openairt.ModalityAudio,
-				openairt.ModalityText,
-			},
-			Instructions: "You are a friendly assistant.",
+		Modalities: []openairt.Modality{
+			openairt.ModalityAudio,
+			openairt.ModalityText,
 		},
+		Instructions: "You are a friendly assistant.",
 	})
 	require.NoError(t, err)
 	require.NotEmpty(t, session.ClientSecret.Value)

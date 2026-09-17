@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	openairt "github.com/hanzoai/go-openai-realtime"
 	"github.com/hanzoai/go-openai"
+	openairt "github.com/hanzoai/go-openai-realtime"
 	"github.com/hanzoai/go-openai/jsonschema"
 	"github.com/stretchr/testify/require"
 )
@@ -13,9 +13,7 @@ import (
 func TestSessionUpdateEvent(t *testing.T) {
 	temperature := float32(0.5)
 	message := openairt.SessionUpdateEvent{
-		EventBase: openairt.EventBase{
-			EventID: "test-id",
-		},
+		EventID: "test-id",
 		Session: openairt.ClientSession{
 			Modalities:        []openairt.Modality{openairt.ModalityText, openairt.ModalityAudio},
 			Instructions:      "test-instructions",
@@ -26,12 +24,10 @@ func TestSessionUpdateEvent(t *testing.T) {
 				Model: openai.Whisper1,
 			},
 			TurnDetection: &openairt.ClientTurnDetection{
-				Type: openairt.ClientTurnDetectionTypeServerVad,
-				TurnDetectionParams: openairt.TurnDetectionParams{
-					Threshold:         0.5,
-					PrefixPaddingMs:   1000,
-					SilenceDurationMs: 2000,
-				},
+				Type:              openairt.ClientTurnDetectionTypeServerVad,
+				Threshold:         0.5,
+				PrefixPaddingMs:   1000,
+				SilenceDurationMs: 2000,
 			},
 			Tools: []openairt.Tool{
 				{

@@ -19,7 +19,7 @@ import (
 // only allows one message every 100ms with a 10 message burst.
 type echoServer struct {
 	// logf controls where logs are sent.
-	logf func(f string, v ...interface{})
+	logf func(f string, v ...any)
 	// interval is the interval between each message.
 	interval time.Duration
 }
@@ -96,7 +96,7 @@ type Server struct {
 
 func NewServer(_ *testing.T, interval time.Duration) Server {
 	var testServer Server
-	testServer.Server = httptest.NewServer(echoServer{logf: func(f string, v ...interface{}) {
+	testServer.Server = httptest.NewServer(echoServer{logf: func(f string, v ...any) {
 		log.Printf("[test server] "+f, v...)
 	}, interval: interval})
 	testServer.URL = makeWsProto(testServer.Server.URL)
