@@ -1,5 +1,7 @@
 # OpenAI Realtime API SDK for Golang
 
+[![Open in Hanzo](https://hanzo.app/badges/open-in-hanzo.svg)](https://hanzo.app/dev/open?repo=github.com/hanzoai/go-openai-realtime&ref=main&action=open) [![Edit with Hanzo](https://hanzo.app/badges/edit-with-hanzo.svg)](https://hanzo.app/dev/open?repo=github.com/hanzoai/go-openai-realtime&ref=main&action=edit) [![Deploy with Hanzo](https://hanzo.app/badges/deploy-with-hanzo.svg)](https://hanzo.app/dev/open?repo=github.com/hanzoai/go-openai-realtime&ref=main&action=deploy)
+
 [![Go Reference](https://pkg.go.dev/badge/github.com/WqyJh/go-openai-realtime.svg)](https://pkg.go.dev/github.com/WqyJh/go-openai-realtime)
 [![Go Report Card](https://goreportcard.com/badge/github.com/WqyJh/go-openai-realtime)](https://goreportcard.com/report/github.com/WqyJh/go-openai-realtime)
 [![codecov](https://codecov.io/gh/WqyJh/go-openai-realtime/branch/main/graph/badge.svg?token=bCbIfHLIsW)](https://codecov.io/gh/WqyJh/go-openai-realtime)
